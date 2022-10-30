@@ -1,0 +1,66 @@
+version: '3'
+
+services:
+  app-gateway:
+    build:
+      context: ./gateway/docker
+      dockerfile: app.Dockerfile
+    ports: 
+      - 8081:8081
+    volumes:
+      - ./gateway/app:/app
+
+  app-product:
+    build:
+      context: ./product/docker
+      dockerfile: app.Dockerfile
+    ports: 
+      - 4201:4201
+    volumes:
+      - ./product/app:/app
+
+  db-product:
+    build:
+      context: ./product/docker
+      dockerfile: db.Dockerfile
+    ports:
+      - 3306:3306
+    volumes:
+      - ./product/db/my.conf:/etc/mysql/conf.d/my.conf
+
+  app-company:
+    build:
+      context: ./company/docker
+      dockerfile: app.Dockerfile
+    ports: 
+      - 4203:4203
+    volumes:
+      - ./company/app:/app
+
+  db-company:
+    build:
+      context: ./company/docker
+      dockerfile: db.Dockerfile
+    ports:
+      - 3307:3307
+    volumes:
+      - ./dompany/db/my.conf:/etc/mysql/conf.d/my.conf
+
+  app-review:
+    build:
+      context: ./review/docker
+      dockerfile: app.Dockerfile
+    ports: 
+      - 4202:4202
+    volumes:
+      - ./review/app:/app
+
+  db-review:
+    build:
+      context: ./review/docker
+      dockerfile: db.Dockerfile
+    ports:
+      - 3308:3308
+    volumes:
+      - ./review/db/my.conf:/etc/mysql/conf.d/my.conf
+    

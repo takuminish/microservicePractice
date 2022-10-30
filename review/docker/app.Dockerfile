@@ -1,0 +1,5 @@
+FROM ruby:3
+
+WORKDIR app
+
+EXPOSE 4202
