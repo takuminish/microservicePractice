@@ -1,4 +1,4 @@
-# microServiceTest
+# microServicePractice
 
 ## About
 microserviceの練習として以下の異なる言語、フレームワークを1つのserviceとして、microserviceを構築する。
