@@ -28,7 +28,10 @@ services:
     volumes:
       - ./product/db/my.conf:/etc/mysql/conf.d/my.conf
       - ./product/db/db_init:/docker-entrypoint-initdb.d
-
+    environment:
+      TZ: Asia/Tokyo
+      MYSQL_ROOT_PASSWORD: root
+      
   app-company:
     build:
       context: ./company/docker
@@ -47,6 +50,9 @@ services:
     volumes:
       - ./company/db/my.conf:/etc/mysql/conf.d/my.conf
       - ./company/db/db_init:/docker-entrypoint-initdb.d
+    environment:
+      TZ: Asia/Tokyo
+      MYSQL_ROOT_PASSWORD: root
 
   app-review:
     build:
@@ -66,4 +72,7 @@ services:
     volumes:
       - ./review/db/my.conf:/etc/mysql/conf.d/my.conf
       - ./review/db/db_init:/docker-entrypoint-initdb.d
+    environment:
+      TZ: Asia/Tokyo
+      MYSQL_ROOT_PASSWORD: root
     
