@@ -31,7 +31,7 @@ services:
     environment:
       TZ: Asia/Tokyo
       MYSQL_ROOT_PASSWORD: root
-      
+
   app-company:
     build:
       context: ./company/docker
@@ -72,6 +72,28 @@ services:
     volumes:
       - ./review/db/my.conf:/etc/mysql/conf.d/my.conf
       - ./review/db/db_init:/docker-entrypoint-initdb.d
+    environment:
+      TZ: Asia/Tokyo
+      MYSQL_ROOT_PASSWORD: root
+    
+  app-user:
+    build:
+      context: ./user/docker
+      dockerfile: app.Dockerfile
+    ports: 
+      - 4204:4204
+    volumes:
+      - ./user/app:/app
+
+  db-user:
+    build:
+      context: ./user/docker
+      dockerfile: db.Dockerfile
+    ports:
+      - 3309:3309
+    volumes:
+      - ./user/db/my.conf:/etc/mysql/conf.d/my.conf
+      - ./user/db/db_init:/docker-entrypoint-initdb.d
     environment:
       TZ: Asia/Tokyo
       MYSQL_ROOT_PASSWORD: root

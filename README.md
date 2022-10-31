@@ -27,7 +27,14 @@ ECサイトにて販売されている商品データが格納された商品DB�
 ECサイトに登録した販売企業データを格納した企業DBに対し、CRUD操作を行う機能を持つ。
 
 技術スタック
-- Sinatra(Ruby)
+- Express(JavaScript)
+- mysql
+
+### ユーザサービス
+ECサイトに登録したユーザデータを格納したユーザDBに対し、CRUD操作を行う機能を持つ。
+
+技術スタック
+- Express(JavaScript)
 - mysql
 
 ## Technology used
