@@ -62,6 +62,8 @@ services:
       - 4202:4202
     volumes:
       - ./review/app:/app
+    command:
+      sh -c 'bundle install;bundle exec rackup config.ru -p 4202 -o 0.0.0.0'
 
   db-review:
     build:
