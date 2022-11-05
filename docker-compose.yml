@@ -31,6 +31,7 @@ services:
     environment:
       TZ: Asia/Tokyo
       MYSQL_ROOT_PASSWORD: root
+      BIND-ADDRESS: 0.0.0.0
 
   app-company:
     build:
@@ -46,13 +47,14 @@ services:
       context: ./company/docker
       dockerfile: db.Dockerfile
     ports:
-      - 3307:3307
+      - 3307:3306
     volumes:
       - ./company/db/my.conf:/etc/mysql/conf.d/my.conf
       - ./company/db/db_init:/docker-entrypoint-initdb.d
     environment:
       TZ: Asia/Tokyo
       MYSQL_ROOT_PASSWORD: root
+      BIND-ADDRESS: 0.0.0.0
 
   app-review:
     build:
@@ -93,11 +95,12 @@ services:
       context: ./user/docker
       dockerfile: db.Dockerfile
     ports:
-      - 3309:3309
+      - 3309:3306
     volumes:
       - ./user/db/my.conf:/etc/mysql/conf.d/my.conf
       - ./user/db/db_init:/docker-entrypoint-initdb.d
     environment:
       TZ: Asia/Tokyo
       MYSQL_ROOT_PASSWORD: root
+      BIND-ADDRESS: 0.0.0.0
     
