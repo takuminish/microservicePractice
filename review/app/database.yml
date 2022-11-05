@@ -5,6 +5,6 @@ development:
   pool: 5
   username: root
   password: root
-  port: 3306
-  host: db-review
+  port: 3306 #コンテナ内部のポートを指定する
+  host: db-review #コンテナのサービス名を指定する
   database: review
