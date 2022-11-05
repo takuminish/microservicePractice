@@ -70,13 +70,14 @@ services:
       context: ./review/docker
       dockerfile: db.Dockerfile
     ports:
-      - 3308:3308
+      - 3308:3306
     volumes:
       - ./review/db/my.conf:/etc/mysql/conf.d/my.conf
       - ./review/db/db_init:/docker-entrypoint-initdb.d
     environment:
       TZ: Asia/Tokyo
       MYSQL_ROOT_PASSWORD: root
+      BIND-ADDRESS: 0.0.0.0
     
   app-user:
     build:
