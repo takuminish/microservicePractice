@@ -3,7 +3,7 @@ version: '3'
 services:
   app-gateway:
     build:
-      context: ./gateway/docker
+      context: ./gateway
       dockerfile: app.Dockerfile
     ports: 
       - 8081:8081
@@ -12,7 +12,7 @@ services:
 
   app-product:
     build:
-      context: ./product/docker
+      context: ./product
       dockerfile: app.Dockerfile
     ports: 
       - 4201:4201
@@ -21,7 +21,7 @@ services:
 
   db-product:
     build:
-      context: ./product/docker
+      context: ./product
       dockerfile: db.Dockerfile
     ports:
       - 3306:3306
@@ -89,7 +89,7 @@ services:
     
   app-user:
     build:
-      context: ./user/docker
+      context: ./user
       dockerfile: app.Dockerfile
     ports: 
       - 4204:4204
@@ -98,7 +98,7 @@ services:
 
   db-user:
     build:
-      context: ./user/docker
+      context: ./user
       dockerfile: db.Dockerfile
     ports:
       - 3309:3306
