@@ -64,8 +64,9 @@ services:
       - 4202:4202
     volumes:
       - ./review/app:/app
-    command:
-      sh -c 'bundle install;bundle exec rackup config.ru -p 4202 -o 0.0.0.0'
+ #   command:
+ #     sh -c 'bundle install;bundle exec rackup config.ru -p 4202 -o 0.0.0.0'
+    tty: true
 
   db-review:
     build:
@@ -76,10 +77,12 @@ services:
     volumes:
       - ./review/db/my.conf:/etc/mysql/conf.d/my.conf
       - ./review/db/db_init:/docker-entrypoint-initdb.d
+    container_name: db-review
     environment:
       TZ: Asia/Tokyo
       MYSQL_ROOT_PASSWORD: root
       BIND-ADDRESS: 0.0.0.0
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     
   app-user:
     build:
